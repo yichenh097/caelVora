@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #5f826b; font-style: italic;}
+.s4 { color: #67a37c; font-style: italic;}
+.s5 { color: #2aacb8;}
+.s6 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">io</span><span class="s2">.</span><span class="s1">github</span><span class="s2">.</span><span class="s1">some_example_name</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">ApplicationAdapter</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">Gdx</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">Input</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">GL20</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">OrthographicCamera</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Texture</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">g2d</span><span class="s2">.</span><span class="s1">Sprite</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">g2d</span><span class="s2">.</span><span class="s1">SpriteBatch</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">Rectangle</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">Vector2</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">Vector3</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">utils</span><span class="s2">.</span><span class="s1">ScreenUtils</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">badlogic</span><span class="s2">.</span><span class="s1">gdx</span><span class="s2">.</span><span class="s1">utils</span><span class="s2">.</span><span class="s1">viewport</span><span class="s2">.</span><span class="s1">FitViewport</span><span class="s2">;</span>
+
+<span class="s0">import static </span><span class="s1">java</span><span class="s2">.</span><span class="s1">lang</span><span class="s2">.</span><span class="s1">Math</span><span class="s2">.</span><span class="s1">tan</span><span class="s2">;</span>
+
+<span class="s3">/** {</span><span class="s4">@link </span><span class="s3">com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */</span>
+<span class="s0">public class </span><span class="s1">Main </span><span class="s0">extends </span><span class="s1">ApplicationAdapter </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">SpriteBatch batch</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Texture image</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Texture platform</span><span class="s2">;</span>
+    <span class="s0">double </span><span class="s1">finalx</span><span class="s2">;</span>
+    <span class="s0">double </span><span class="s1">finaly</span><span class="s2">;</span>
+    <span class="s1">Sprite player</span><span class="s2">;</span>
+    <span class="s1">OrthographicCamera camera</span><span class="s2">;</span>
+    <span class="s1">Sprite plat</span><span class="s2">;</span>
+    <span class="s0">private boolean </span><span class="s1">jump</span><span class="s2">;</span>
+    <span class="s1">FitViewport viewport</span><span class="s2">;</span>
+    <span class="s1">Rectangle hitbox</span><span class="s2">;</span>
+    <span class="s1">Rectangle level</span><span class="s2">;</span>
+    <span class="s1">Texture bg</span><span class="s2">;</span>
+    <span class="s0">int </span><span class="s1">xPos </span><span class="s2">= </span><span class="s5">100</span><span class="s2">;</span>
+    <span class="s0">float </span><span class="s1">xVel </span><span class="s2">= </span><span class="s5">0</span><span class="s2">;</span>
+    <span class="s0">float </span><span class="s1">yVel </span><span class="s2">=</span><span class="s5">0</span><span class="s2">;</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">create</span><span class="s2">() {</span>
+        <span class="s1">batch </span><span class="s2">= </span><span class="s0">new </span><span class="s1">SpriteBatch</span><span class="s2">();</span>
+        <span class="s1">platform </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Texture</span><span class="s2">(</span><span class="s6">&quot;platform.png&quot;</span><span class="s2">);</span>
+        <span class="s1">image </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Texture</span><span class="s2">(</span><span class="s6">&quot;player.png&quot;</span><span class="s2">);</span>
+        <span class="s1">player </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Sprite</span><span class="s2">(</span><span class="s1">image</span><span class="s2">);</span>
+        <span class="s1">player</span><span class="s2">.</span><span class="s1">setPosition</span><span class="s2">(</span><span class="s5">100</span><span class="s2">,</span><span class="s5">500</span><span class="s2">);</span>
+        <span class="s1">plat </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Sprite</span><span class="s2">(</span><span class="s1">platform</span><span class="s2">);</span>
+        <span class="s1">plat</span><span class="s2">.</span><span class="s1">setPosition</span><span class="s2">(</span><span class="s5">100</span><span class="s2">,</span><span class="s5">200</span><span class="s2">);</span>
+        <span class="s1">bg </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Texture</span><span class="s2">(</span><span class="s6">&quot;Ptest.png&quot;</span><span class="s2">);</span>
+        <span class="s1">plat</span><span class="s2">.</span><span class="s1">setSize</span><span class="s2">(</span><span class="s5">6000</span><span class="s2">,</span><span class="s5">200</span><span class="s2">);</span>
+        <span class="s1">camera </span><span class="s2">= </span><span class="s0">new </span><span class="s1">OrthographicCamera</span><span class="s2">();</span>
+        <span class="s1">camera</span><span class="s2">.</span><span class="s1">setToOrtho</span><span class="s2">(</span><span class="s0">false</span><span class="s2">, </span><span class="s5">1920</span><span class="s2">, </span><span class="s5">1080</span><span class="s2">);</span>
+         <span class="s1">hitbox </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getBoundingRectangle</span><span class="s2">();</span>
+         <span class="s1">level </span><span class="s2">= </span><span class="s1">plat</span><span class="s2">.</span><span class="s1">getBoundingRectangle</span><span class="s2">();</span>
+        <span class="s1">viewport </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FitViewport</span><span class="s2">(</span><span class="s5">1920</span><span class="s2">,</span><span class="s5">1080</span><span class="s2">);</span>
+    <span class="s2">}</span>
+    <span class="s0">public void </span><span class="s1">resize</span><span class="s2">(</span><span class="s0">int </span><span class="s1">width</span><span class="s2">, </span><span class="s0">int </span><span class="s1">height</span><span class="s2">){</span>
+        <span class="s1">viewport</span><span class="s2">.</span><span class="s1">update</span><span class="s2">(</span><span class="s1">width</span><span class="s2">,</span><span class="s1">height</span><span class="s2">,</span><span class="s0">true</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">render</span><span class="s2">() {</span>
+        <span class="s1">ScreenUtils</span><span class="s2">.</span><span class="s1">clear</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">input</span><span class="s2">();</span>
+        <span class="s1">cameraset</span><span class="s2">();</span>
+        <span class="s1">camera</span><span class="s2">.</span><span class="s1">update</span><span class="s2">();</span>
+        <span class="s1">viewport</span><span class="s2">.</span><span class="s1">apply</span><span class="s2">();</span>
+        <span class="s1">batch</span><span class="s2">.</span><span class="s1">setProjectionMatrix</span><span class="s2">(</span><span class="s1">camera</span><span class="s2">.</span><span class="s1">combined</span><span class="s2">);</span>
+        <span class="s1">batch</span><span class="s2">.</span><span class="s1">begin</span><span class="s2">();</span>
+        <span class="s1">player</span><span class="s2">.</span><span class="s1">draw</span><span class="s2">(</span><span class="s1">batch</span><span class="s2">);</span>
+        <span class="s1">plat</span><span class="s2">.</span><span class="s1">draw</span><span class="s2">(</span><span class="s1">batch</span><span class="s2">);</span>
+        <span class="s1">batch</span><span class="s2">.</span><span class="s1">end</span><span class="s2">();</span>
+    <span class="s2">}</span>
+    <span class="s0">private void </span><span class="s1">input</span><span class="s2">() {</span>
+        <span class="s0">float </span><span class="s1">yb4 </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">();</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">isKeyPressed</span><span class="s2">(</span><span class="s1">Input</span><span class="s2">.</span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">D</span><span class="s2">)) {</span>
+            <span class="s1">xVel</span><span class="s2">++;</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">xPos</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">if </span><span class="s2">(</span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">isKeyPressed</span><span class="s2">(</span><span class="s1">Input</span><span class="s2">.</span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">A</span><span class="s2">)) {</span>
+            <span class="s1">xVel</span><span class="s2">--;</span>
+        <span class="s2">} </span><span class="s0">if </span><span class="s2">(</span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">isButtonJustPressed</span><span class="s2">(</span><span class="s1">Input</span><span class="s2">.</span><span class="s1">Buttons</span><span class="s2">.</span><span class="s1">RIGHT</span><span class="s2">)){</span>
+            <span class="s1">dash</span><span class="s2">();</span>
+            <span class="s1">xVel </span><span class="s2">+= (</span><span class="s0">float</span><span class="s2">) </span><span class="s1">finalx</span><span class="s2">;</span>
+            <span class="s1">yVel</span><span class="s2">+= (</span><span class="s0">float</span><span class="s2">) </span><span class="s1">finaly</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">float </span><span class="s1">ogPos </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getX</span><span class="s2">();</span>
+        <span class="s1">player</span><span class="s2">.</span><span class="s1">translateX</span><span class="s2">(</span><span class="s1">xVel</span><span class="s2">);</span>
+        <span class="s1">hitbox </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getBoundingRectangle</span><span class="s2">();</span>
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">hitbox</span><span class="s2">.</span><span class="s1">overlaps</span><span class="s2">(</span><span class="s1">level</span><span class="s2">)) {</span>
+            <span class="s1">player</span><span class="s2">.</span><span class="s1">setX</span><span class="s2">(</span><span class="s1">ogPos</span><span class="s2">);</span>
+            <span class="s1">xVel </span><span class="s2">= </span><span class="s5">0</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s1">xVel </span><span class="s2">*= </span><span class="s5">0.93F</span><span class="s2">;</span>
+        <span class="s0">float </span><span class="s1">ogPosY </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">();</span>
+        <span class="s1">player</span><span class="s2">.</span><span class="s1">translateY</span><span class="s2">(</span><span class="s1">yVel</span><span class="s2">);</span>
+        <span class="s1">hitbox </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getBoundingRectangle</span><span class="s2">();</span>
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">hitbox</span><span class="s2">.</span><span class="s1">overlaps</span><span class="s2">(</span><span class="s1">level</span><span class="s2">)){</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">yVel </span><span class="s2">&lt; </span><span class="s5">0</span><span class="s2">){</span>
+                <span class="s1">player</span><span class="s2">.</span><span class="s1">setY</span><span class="s2">(</span><span class="s1">ogPosY</span><span class="s2">);</span>
+
+                <span class="s1">yVel </span><span class="s2">=</span><span class="s5">0</span><span class="s2">;</span>
+                <span class="s1">jump </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">}</span>
+            <span class="s0">if</span><span class="s2">(</span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">isKeyPressed</span><span class="s2">(</span><span class="s1">Input</span><span class="s2">.</span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">W</span><span class="s2">)){</span>
+                <span class="s0">if</span><span class="s2">(</span><span class="s1">jump</span><span class="s2">) {</span>
+                    <span class="s1">yVel </span><span class="s2">= </span><span class="s5">13</span><span class="s2">;</span>
+                    <span class="s1">jump </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">yVel </span><span class="s2">-= </span><span class="s5">0.5</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">float </span><span class="s1">yaf </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">();</span>
+    <span class="s2">}</span>
+    <span class="s0">public void </span><span class="s1">cameraset</span><span class="s2">(){</span>
+        <span class="s0">float </span><span class="s1">cameraX </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getX</span><span class="s2">() + </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getWidth</span><span class="s2">()/</span><span class="s5">2</span><span class="s2">;</span>
+        <span class="s0">float </span><span class="s1">cameraY </span><span class="s2">= </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">() + </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getHeight</span><span class="s2">()/</span><span class="s5">2</span><span class="s2">;</span>
+        <span class="s1">camera</span><span class="s2">.</span><span class="s1">translate</span><span class="s2">((</span><span class="s0">float</span><span class="s2">) ((</span><span class="s1">cameraX </span><span class="s2">- </span><span class="s1">camera</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">x</span><span class="s2">)*</span><span class="s5">0.1</span><span class="s2">), (</span><span class="s0">float</span><span class="s2">) ((</span><span class="s1">cameraY </span><span class="s2">- </span><span class="s1">camera</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">y</span><span class="s2">)*</span><span class="s5">0.05</span><span class="s2">));</span>
+    <span class="s2">}</span>
+    <span class="s0">private void </span><span class="s1">dash</span><span class="s2">(){</span>
+        <span class="s1">Vector3 mousePos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Vector3</span><span class="s2">(</span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">getX</span><span class="s2">(), </span><span class="s1">Gdx</span><span class="s2">.</span><span class="s1">input</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">(), </span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s1">camera</span><span class="s2">.</span><span class="s1">unproject</span><span class="s2">(</span><span class="s1">mousePos</span><span class="s2">);</span>
+        <span class="s1">Vector2 playerPos </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Vector2</span><span class="s2">(</span><span class="s1">player</span><span class="s2">.</span><span class="s1">getX</span><span class="s2">(), </span><span class="s1">player</span><span class="s2">.</span><span class="s1">getY</span><span class="s2">());</span>
+        <span class="s1">Vector2 direction </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Vector2</span><span class="s2">(</span><span class="s1">mousePos</span><span class="s2">.</span><span class="s1">x </span><span class="s2">- </span><span class="s1">playerPos</span><span class="s2">.</span><span class="s1">x</span><span class="s2">, </span><span class="s1">mousePos</span><span class="s2">.</span><span class="s1">y </span><span class="s2">- </span><span class="s1">playerPos</span><span class="s2">.</span><span class="s1">y</span><span class="s2">);</span>
+        <span class="s1">direction</span><span class="s2">.</span><span class="s1">nor</span><span class="s2">();</span>
+        <span class="s1">finalx </span><span class="s2">= </span><span class="s5">24</span><span class="s2">*</span><span class="s1">direction</span><span class="s2">.</span><span class="s1">x</span><span class="s2">;</span>
+        <span class="s1">finaly </span><span class="s2">= </span><span class="s5">24</span><span class="s2">*</span><span class="s1">direction</span><span class="s2">.</span><span class="s1">y</span><span class="s2">;</span>
+
+
+    <span class="s2">}</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">dispose</span><span class="s2">() {</span>
+        <span class="s1">batch</span><span class="s2">.</span><span class="s1">dispose</span><span class="s2">();</span>
+        <span class="s1">image</span><span class="s2">.</span><span class="s1">dispose</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
