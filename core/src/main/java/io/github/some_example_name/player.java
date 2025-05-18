@@ -13,13 +13,13 @@ import com.badlogic.gdx.math.Vector3;
 public class player extends Sprite {
     private OrthographicCamera camera;
     private float xVel = 0;
-    private Sprite playerSprite;
+    public Sprite playerSprite;
     private float yVel = 0;
     private Rectangle level;
     private boolean jump = false;
     private double finalx, finaly;
 
-    public void Player(){
+    public player(){
         Texture texture = new Texture("player.png");
         playerSprite = new Sprite(texture);
         playerSprite.setPosition(100, 500);
@@ -39,9 +39,9 @@ public class player extends Sprite {
     private void input(float delta, Rectangle level) {
         float yb4 = playerSprite.getY();
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            xVel++;
+            xVel+= 80*delta;
         } if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            xVel--;
+            xVel-= 80*delta;
         } if (Gdx.input.isButtonJustPressed(Input.Buttons.RIGHT)){
             dash();
             xVel = (float) finalx;
@@ -49,13 +49,14 @@ public class player extends Sprite {
         }
         float ogPos = playerSprite.getX();
         playerSprite.translateX(xVel*delta*100);
+        System.out.println("Delta: " + delta);
         if(playerSprite.getBoundingRectangle().overlaps(level)) {
             playerSprite.setX(ogPos);
             xVel = 0;
         }
         xVel *= 0.93F;
         float ogPosY = playerSprite.getY();
-        playerSprite.translateY(yVel);
+        playerSprite.translateY(yVel * delta * 100);
         if(playerSprite.getBoundingRectangle().overlaps(level)){
             if (yVel < 0){
                 playerSprite.setY(ogPosY);
@@ -69,7 +70,7 @@ public class player extends Sprite {
                 }
             }
         } else {
-            yVel -= 0.35;
+            yVel -= 36 * delta;
         }
         float yaf = playerSprite.getY();
     }

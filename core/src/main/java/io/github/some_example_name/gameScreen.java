@@ -1,5 +1,7 @@
 package io.github.some_example_name;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -41,6 +43,8 @@ public class gameScreen implements Screen {
 
     @Override
     public void render(float delta){
+        Gdx.gl.glClearColor(255,255,255,0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         player.update(delta, level);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
@@ -73,7 +77,7 @@ public class gameScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
-        image.dispose();
+        bg.dispose();
     }
 
 }
